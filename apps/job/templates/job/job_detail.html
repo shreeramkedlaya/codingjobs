@@ -1,6 +1,18 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 {% block content %}
+<style>
+    body {
+        background-image: url('{% static "images/view_job.jpg" %}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        height: 100vh;
+    }
+    h1.title, label.label, input[type="text"], input[type="password"],p.is-size-4, p ,b{
+        color: white;
+    }
+</style>
     <h1 class="title">{{ job.title }} ({{ job.get_status_display }})</h1>
 
     <p class="is-size-4">{{ job.short_description }}</p>

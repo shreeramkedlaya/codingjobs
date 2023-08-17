@@ -7,5 +7,8 @@
 migrations/
 LICENSE
 __pycache__/
-static/
+/static/images/css/
+/static/images/fonts/
+/static/images/js/
+/static/images/scss/
 __init__.py

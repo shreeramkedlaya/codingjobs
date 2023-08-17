@@ -1,6 +1,18 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 {% block content %}
+<style>
+    body {
+        background-image: url('{% static "images/search.jpg" %}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        height: 100vh;
+    }
+    h1.title, label.label, input[type="text"], input[type="password"] {
+        color: white;
+    }
+</style>
     <div id="search-app">
         <h1 class="title">Search</h1>
 
@@ -41,7 +53,7 @@
         </form>
 
         <div v-if="jobs.length">
-            <hr>
+            <br><br><br>
 
             <div
                 v-for="job in jobs"

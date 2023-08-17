@@ -1,37 +1,69 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
 {% block content %}
+<style>
+    body {
+        background-image: url('{% static "images/signup.jpg" %}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed; 
+        height: 100vh;
+    }
+    h1.title, label.label, input[type="text"], input[type="password"] {
+        color: white;
+    }
+</style>
     <div class="container">
         <div class="columns">
             <div class="column is-6 is-offset-3">
-                <h1 class="title">Sign up</h1>
+                <div class="form">
+                    <h1 class="title">Join Us</h1>
 
-                <form method="post" action=".">
-                    {% csrf_token %}
+                    <form method="post" action="{% url 'signup' %}" class="form">
+                        {% csrf_token %}
 
-                    {{ form.as_p }}
-
-                    <hr>
-
-                    <div class="field">
-                        <label>Account type</label>
-
-                        <div class="control">
-                            <div class="select">
-                                <select name="account_type">
-                                    <option value="jobseeker" selected>Job seeker</option>
-                                    <option value="employer">Employer</option>
-                                </select>
+                        <div class="field">
+                            <label class="label" for="{{ form.username.id_for_label }}">Username</label>
+                            <div class="control">
+                                {{ form.username }}
                             </div>
                         </div>
-                    </div>
 
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-success">Sign up</button>
+                        <div class="field">
+                            <label class="label" for="{{ form.password1.id_for_label }}">Password</label>
+                            <div class="control">
+                                {{ form.password1 }}
+                            </div>
                         </div>
-                    </div>
-                </form>
+
+                        <div class="field">
+                            <label class="label" for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                            <div class="control">
+                                {{ form.password2 }}
+                            </div>
+                        </div>
+
+                        <br><br><br>
+
+                        <div class="field">
+                            <label class="label" for="account_type">Account type</label>
+                            <div class="control">
+                                <div class="select">
+                                    <select name="account_type" id="account_type">
+                                        <option value="jobseeker" selected>Job seeker</option>
+                                        <option value="employer">Employer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-success">Sign up</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

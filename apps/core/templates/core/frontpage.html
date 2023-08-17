@@ -1,17 +1,50 @@
 {% extends 'core/base.html' %}
+{% load static %}
+
 
 {% block content %}
+<style>
+    body {
+        background-image: url('{% static "images/frontpage.jpg" %}');
+        background-size:cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        margin:0;
+        padding:0;
+        height:100vh;
+    }
+    .job-card {
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 10px;
+        padding: 20px;
+        margin: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .job-card-title {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .job-card-subtitle {
+        font-size:14px;
+        color:#777
+    }
+
+    .subtitle.has-text-centered {
+        color: white; /* For better visibility on the background */
+    }
+</style>
     <h2 class="subtitle has-text-centered">Newest jobs</h2>
 
     <div class="columns">
         {% for job in jobs %}
             <div class="column is-4">
-                <div class="card">
+                <div class="job-card">
                     <div class="card-content">
                         <div class="media">
                             <div class="media-content">
-                                <p class="title is-4">{{ job.title }}</p>
-                                <p class="subtitle is-6">{{ job.created_at }}</p>
+                                <p class="job-card-title">{{ job.title }}</p>
+                                <p class="job-card-subtitle">{{ job.created_at }}</p>
                             </div>
                         </div>
 
